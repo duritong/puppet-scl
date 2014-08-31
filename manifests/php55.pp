@@ -31,7 +31,7 @@ class scl::php55 {
       'php55-php-pecl-gnupg',
       'php55-php-pecl-http',
       'php55-php-pecl-imagick',
-      'php55-php-pecl-lzf ',
+      'php55-php-pecl-lzf',
       'php55-php-pecl-mailparse',
       'php55-php-pecl-memcache',
       'php55-php-pecl-memcached',

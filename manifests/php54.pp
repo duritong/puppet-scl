@@ -31,7 +31,7 @@ class scl::php54 {
       'php54-php-pecl-gnupg',
       'php54-php-pecl-http',
       'php54-php-pecl-imagick',
-      'php54-php-pecl-lzf ',
+      'php54-php-pecl-lzf',
       'php54-php-pecl-mailparse',
       'php54-php-pecl-memcache',
       'php54-php-pecl-memcached',
