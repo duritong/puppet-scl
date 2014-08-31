@@ -26,7 +26,6 @@ class scl::php54 {
       'php54-php-pdo',
       'php54-php-pear',
       'php54-php-pecl-apc',
-      'php54-php-pecl-apcu',
       'php54-php-pecl-crypto',
       'php54-php-pecl-geoip',
       'php54-php-pecl-gnupg',
