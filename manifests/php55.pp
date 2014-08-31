@@ -28,7 +28,6 @@ class scl::php55 {
       'php55-php-pecl-apcu',
       'php55-php-pecl-crypto',
       'php55-php-pecl-geoip',
-      'php55-php-pecl-gmagick',
       'php55-php-pecl-gnupg',
       'php55-php-pecl-http',
       'php55-php-pecl-imagick',

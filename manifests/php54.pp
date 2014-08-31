@@ -29,7 +29,6 @@ class scl::php54 {
       'php54-php-pecl-apcu',
       'php54-php-pecl-crypto',
       'php54-php-pecl-geoip',
-      'php54-php-pecl-gmagick',
       'php54-php-pecl-gnupg',
       'php54-php-pecl-http',
       'php54-php-pecl-imagick',
