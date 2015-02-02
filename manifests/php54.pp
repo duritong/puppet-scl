@@ -10,6 +10,10 @@ class scl::php54 {
       enabled  => 1,
       gpgcheck => 0,
   } -> package{
+    [ 'php54-php-pecl-propro',
+      'php54-php-pecl-raphf', ]:
+    ensure => present;
+  } -> package{
     [ 'php54-php-common',
       'php54-php-bcmath',
       'php54-php-cli',

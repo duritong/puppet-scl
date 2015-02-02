@@ -2,6 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
 describe 'scl::php54', :type => 'class' do
   describe 'with standard' do
+    let(:pre_condition){ 'include yum::prerequisites' }
     it { should compile.with_all_deps }
     it { should contain_class('scl') }
 
