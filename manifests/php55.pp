@@ -3,7 +3,7 @@ class scl::php55 {
   require ::scl
 
   # we need some mor extensions
-  yum::managed_yumrepo{
+  yum::repo{
     'remi-php55more-epel-6-x86_64':
       descr    => 'Php55more - epel-6-x86_64',
       baseurl  => 'https://www.softwarecollections.org/repos/remi/php55more/epel-6-x86_64',
