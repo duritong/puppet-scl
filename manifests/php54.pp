@@ -11,8 +11,6 @@ class scl::php54 {
       gpgkey   => 'https://copr-be.cloud.fedoraproject.org/results/remi/php54more/pubkey.gpg',
       enabled  => 1,
       gpgcheck => 1,
-  } -> package{$repo_name:
-    ensure => present;
   } -> package{
     [ 'php54-php-pecl-propro',
       'php54-php-pecl-raphf', ]:

@@ -11,8 +11,6 @@ class scl::php55 {
       gpgkey   => 'https://copr-be.cloud.fedoraproject.org/results/remi/php55more/pubkey.gpg',
       enabled  => 1,
       gpgcheck => 1,
-  } -> package{$repo_name:
-    ensure => present;
   } -> package{
     [ 'php55-php-common',
       'php55-php-bcmath',
