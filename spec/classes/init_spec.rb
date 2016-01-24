@@ -6,11 +6,15 @@ describe 'scl', :type => 'class' do
     it { should compile.with_all_deps }
 
     it { should contain_package('centos-release-SCL').with(
+      :ensure => 'absent',
+      :before => ['Package[centos-release-scl]'],
+    )}
+    it { should contain_package('centos-release-scl').with(
       :ensure => 'present',
     )}
-    it { should contain_file('/etc/yum.repos.d/CentOS-SCL.repo').with(
+    it { should contain_file('/etc/yum.repos.d/CentOS-SCLo-scl.repo').with(
       :ensure  => 'present',
-      :require => 'Package[centos-release-SCL]',
+      :require => 'Package[centos-release-scl]',
     )}
   end
 end

@@ -2,7 +2,7 @@
 class scl {
   package{'centos-release-SCL':
     ensure => absent,
-  } -> pacakge{'centos-release-scl':
+  } -> package{'centos-release-scl':
     ensure => present,
   }
   # don't cleanup the repo
