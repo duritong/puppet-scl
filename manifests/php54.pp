@@ -2,13 +2,17 @@
 class scl::php54 {
   require ::scl
 
-  # we need some mor extensions
+  # we need some more extensions
+  $repo_name = "remi-php54more-epel-${::operatingsystemmajrelease}-x86_64"
   yum::repo{
-    'remi-php54more-epel-6-x86_64':
-      descr    => 'Php54more - epel-6-x86_64',
-      baseurl  => 'https://www.softwarecollections.org/repos/remi/php54more/epel-6-x86_64',
+    $repo_name:
+      descr    => "Php54more - epel-${::operatingsystemmajrelease}-x86_64",
+      baseurl  => "https://www.softwarecollections.org/repos/remi/php54more/epel-${::operatingsystemmajrelease}-x86_64",
+      gpgkey   => 'https://copr-be.cloud.fedoraproject.org/results/remi/php54more/pubkey.gpg',
       enabled  => 1,
-      gpgcheck => 0,
+      gpgcheck => 1,
+  } -> package{$repo_name:
+    ensure => present;
   } -> package{
     [ 'php54-php-pecl-propro',
       'php54-php-pecl-raphf', ]:

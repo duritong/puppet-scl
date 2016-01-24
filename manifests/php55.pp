@@ -2,13 +2,17 @@
 class scl::php55 {
   require ::scl
 
-  # we need some mor extensions
+  # we need some more extensions
+  $repo_name = "remi-php55more-epel-${::operatingsystemmajrelease}-x86_64"
   yum::repo{
-    'remi-php55more-epel-6-x86_64':
-      descr    => 'Php55more - epel-6-x86_64',
-      baseurl  => 'https://www.softwarecollections.org/repos/remi/php55more/epel-6-x86_64',
+    $repo_name:
+      descr    => "Php54more - epel-${::operatingsystemmajrelease}-x86_64",
+      baseurl  => "https://www.softwarecollections.org/repos/remi/php55more/epel-${::operatingsystemmajrelease}-x86_64",
+      gpgkey   => 'https://copr-be.cloud.fedoraproject.org/results/remi/php55more/pubkey.gpg',
       enabled  => 1,
-      gpgcheck => 0,
+      gpgcheck => 1,
+  } -> package{$repo_name:
+    ensure => present;
   } -> package{
     [ 'php55-php-common',
       'php55-php-bcmath',
