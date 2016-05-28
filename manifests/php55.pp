@@ -58,7 +58,5 @@ class scl::php55 {
       'php55-php-xmlrpc',
       'php55-php-opcache',]:
         ensure => present;
-      'php55-php-xcache':
-        ensure => absent;
   }
 }
