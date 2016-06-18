@@ -70,6 +70,6 @@ define scl::phpx(
   ),{require   => Yum::Repo[$repo_name]})
   ensure_packages($additional_libs,{require => Yum::Repo[$repo_name]})
   if versioncmp($::operatingsystemmajrelease,'7') < 0 {
-    ensure_packages(prefix("${prefix}php${name}-",['php-pecl-sqlite',]))
+    ensure_packages(prefix(['php-pecl-sqlite',],"${prefix}php${name}-"))
   }
 }
