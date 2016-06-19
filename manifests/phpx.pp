@@ -9,6 +9,7 @@ define scl::phpx(
   $prefix          = '',
   $more_prefix     = '',
   $additional_libs = [],
+  $disabled_libs   = 'donotreject',
 ) {
   require ::scl
   $repo_name = "remi-php${name}more-epel-${::operatingsystemmajrelease}-x86_64"
@@ -20,7 +21,7 @@ define scl::phpx(
       enabled  => 1,
       gpgcheck => 1,
   }
-  ensure_packages(prefix(
+  ensure_packages(prefix(reject(
     [ 'php-bcmath',
       'php-cli',
       'php-common',
@@ -41,9 +42,9 @@ define scl::phpx(
       'php-soap',
       'php-xml',
       'php-xmlrpc',
-    ],"${prefix}php${name}-"
+    ],$disabled_libs),"${prefix}php${name}-"
   ))
-  ensure_packages(prefix(
+  ensure_packages(prefix(reject(
     [ 'php-imap',
       'php-mcrypt',
       'php-pecl-apcu',
@@ -66,10 +67,10 @@ define scl::phpx(
       'php-pecl-yaml',
       'php-suhosin',
       'php-tidy',
-    ],"${more_prefix}php${name}-"
+    ],$disabled_libs),"${more_prefix}php${name}-"
   ),{require   => Yum::Repo[$repo_name]})
   ensure_packages($additional_libs,{require => Yum::Repo[$repo_name]})
   if versioncmp($::operatingsystemmajrelease,'7') < 0 {
-    ensure_packages(prefix(['php-pecl-sqlite',],"${prefix}php${name}-"))
+    ensure_packages(prefix(reject(['php-pecl-sqlite',],$disabled_libs),"${prefix}php${name}-"))
   }
 }

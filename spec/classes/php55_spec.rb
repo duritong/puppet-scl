@@ -2,9 +2,14 @@ require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
 describe 'scl::php55', :type => 'class' do
   describe 'with standard' do
+    let(:facts) {
+      {
+        :operatingsystemmajrelease => '7',
+      }
+    }
     let(:pre_condition){ 'include yum::prerequisites' }
-    it { should compile.with_all_deps }
-    it { should contain_class('scl') }
+    it { is_expected.to compile.with_all_deps }
+    it { is_expected.to contain_class('scl') }
 
     [ 'php55-php-common',
       'php55-php-bcmath',
@@ -28,7 +33,7 @@ describe 'scl::php55', :type => 'class' do
       'php55-php-tidy',
       'php55-php-xml',
       'php55-php-xmlrpc' ].each do |p|
-      it { should contain_package(p).with(
+      it { is_expected.to contain_package(p).with(
         :ensure => 'present',
       )}
     end

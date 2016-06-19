@@ -2,9 +2,14 @@ require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
 describe 'scl::php54', :type => 'class' do
   describe 'with standard' do
+    let(:facts) {
+      {
+        :operatingsystemmajrelease => '7',
+      }
+    }
     let(:pre_condition){ 'include yum::prerequisites' }
-    it { should compile.with_all_deps }
-    it { should contain_class('scl') }
+    it { is_expected.to compile.with_all_deps }
+    it { is_expected.to contain_class('scl') }
 
     [ 'php54-php-common',
       'php54-php-bcmath',
@@ -20,7 +25,7 @@ describe 'scl::php54', :type => 'class' do
       'php54-php-odbc',
       'php54-php-pdo',
       'php54-php-pear',
-      'php54-php-pecl-apc',
+      'php54-php-pecl-apcu',
       'php54-php-pecl-memcache',
       'php54-php-pgsql',
       'php54-php-process',
@@ -29,7 +34,7 @@ describe 'scl::php54', :type => 'class' do
       'php54-php-tidy',
       'php54-php-xml',
       'php54-php-xmlrpc' ].each do |p|
-      it { should contain_package(p).with(
+      it { is_expected.to contain_package(p).with(
         :ensure => 'present',
       )}
     end
