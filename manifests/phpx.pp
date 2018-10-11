@@ -12,14 +12,19 @@ define scl::phpx(
   $disabled_libs   = 'donotreject',
 ) {
   require ::scl
-  $repo_name = "remi-php${name}more-epel-${::operatingsystemmajrelease}-x86_64"
-  yum::repo{
-    $repo_name:
-      descr    => "Php${name}more - epel-${::operatingsystemmajrelease}-x86_64",
-      baseurl  => "https://www.softwarecollections.org/repos/remi/php${name}more/epel-${::operatingsystemmajrelease}-x86_64",
-      gpgkey   => "https://copr-be.cloud.fedoraproject.org/results/remi/php${name}more/pubkey.gpg",
-      enabled  => 1,
-      gpgcheck => 1,
+  if $name =~ /^5/ {
+    $repo_name = "remi-php${name}more-epel-${::operatingsystemmajrelease}-x86_64"
+    yum::repo{
+      $repo_name:
+        descr    => "Php${name}more - epel-${::operatingsystemmajrelease}-x86_64",
+        baseurl  => "https://www.softwarecollections.org/repos/remi/php${name}more/epel-${::operatingsystemmajrelease}-x86_64",
+        gpgkey   => "https://copr-be.cloud.fedoraproject.org/results/remi/php${name}more/pubkey.gpg",
+        enabled  => 1,
+        gpgcheck => 1,
+    }
+  } elsif $name =~ /^7/ {
+    require yum::centos::remi
+    $repo_name = 'remi-safe'
   }
   ensure_packages(prefix(reject(
     [ 'php-bcmath',
@@ -28,6 +33,7 @@ define scl::phpx(
       'php-dba',
       'php-devel',
       'php-enchant',
+      'php-fpm',
       'php-gd',
       'php-intl',
       'php-mbstring',
