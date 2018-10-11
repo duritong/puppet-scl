@@ -10,7 +10,7 @@ describe 'scl::ruby24', :type => 'class' do
     let(:pre_condition){ 'include yum::prerequisites' }
     it { is_expected.to compile.with_all_deps }
     it { is_expected.to contain_class('scl') }
-    it { is_expected.to contain_package('rh-ruby43-ruby-devel').with(
+    it { is_expected.to contain_package('rh-ruby24-ruby-devel').with(
       :ensure => 'present',
     )}
     it { is_expected.to contain_package('rh-ruby24-rubygem-bundler').with(
