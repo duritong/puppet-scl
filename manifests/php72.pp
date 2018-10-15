@@ -4,10 +4,11 @@ class scl::php72 {
     '72':
       #prefix         => 'rh-',
       #more_prefix    => 'more-',
-      disabled_libs   => 'php-suhosin',
+      disabled_libs   => '^php-(suhosin|mcrypt)$',
       additional_libs => [
         'php72-php-snuffleupagus',
         'php72-php-opcache',
+        'php72-php-pecl-zip',
       ],
   }
 }
