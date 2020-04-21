@@ -4,11 +4,12 @@ class scl::php74 {
     '74':
       #prefix         => 'rh-',
       #more_prefix    => 'more-',
-      disabled_libs   => '^php-(suhosin|mcrypt)$',
+      disabled_libs   => '^php-(suhosin|mcrypt|recode)$',
       additional_libs => [
         'php74-php-snuffleupagus',
         'php74-php-opcache',
         'php74-php-pecl-zip',
+        'php74-php-pecl-recode',
       ],
   }
 }
