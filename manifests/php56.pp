@@ -5,6 +5,6 @@ class scl::php56 {
       prefix          => 'rh-',
       more_prefix     => 'more-',
       additional_libs => [ 'rh-php56-php-opcache',],
-      disabled_libs   => '(imagick)$'
+      disabled_libs   => '(imagick)$',
   }
 }
