@@ -76,7 +76,4 @@ define scl::phpx(
     ],$disabled_libs),"${more_prefix}php${name}-"
   ),{require   => Yum::Repo[$repo_name]})
   ensure_packages($additional_libs,{require => Yum::Repo[$repo_name]})
-  if versioncmp($::operatingsystemmajrelease,'7') < 0 {
-    ensure_packages(prefix(reject(['php-pecl-sqlite',],$disabled_libs),"${prefix}php${name}-"))
-  }
 }
