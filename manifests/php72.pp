@@ -2,8 +2,6 @@
 class scl::php72 {
   scl::phpx{
     '72':
-      #prefix         => 'rh-',
-      #more_prefix    => 'more-',
       disabled_libs   => '^php-(suhosin|mcrypt)$',
       additional_libs => [
         'php72-php-snuffleupagus',
