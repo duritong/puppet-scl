@@ -34,7 +34,6 @@ describe 'scl::php74', :type => 'class' do
       'php74-php-pecl-memcache',
       'php74-php-pgsql',
       'php74-php-process',
-      'php74-php-recode',
       'php74-php-soap',
       'php74-php-tidy',
       'php74-php-xml',
@@ -45,7 +44,8 @@ describe 'scl::php74', :type => 'class' do
         :ensure => 'present',
       )}
     end
-    [ 'php74-php-pecl-sqlite', ].each do |p|
+    [ 'php74-php-recode',
+      'php74-php-pecl-sqlite', ].each do |p|
       it { is_expected.to_not contain_package(p) }
     end
   end
