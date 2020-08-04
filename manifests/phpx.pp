@@ -35,6 +35,7 @@ define scl::phpx(
       'php-enchant',
       'php-fpm',
       'php-gd',
+      'php-gmp',
       'php-intl',
       'php-mbstring',
       'php-mysqlnd',
