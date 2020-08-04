@@ -10,7 +10,7 @@ define scl::phpx(
   $additional_libs = [],
   $disabled_libs   = 'donotreject',
 ) {
-  require ::scl
+  require scl
   require yum::centos::remi
   ensure_packages(prefix(reject(
     [ 'php-bcmath',
