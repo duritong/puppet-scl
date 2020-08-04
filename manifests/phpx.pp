@@ -7,25 +7,11 @@
 # param. This define will automatically prefix them.
 define scl::phpx(
   $prefix          = '',
-  $more_prefix     = '',
   $additional_libs = [],
   $disabled_libs   = 'donotreject',
 ) {
   require ::scl
-  if $name =~ /^5/ {
-    $repo_name = "remi-php${name}more-epel-${::operatingsystemmajrelease}-x86_64"
-    yum::repo{
-      $repo_name:
-        descr    => "Php${name}more - epel-${::operatingsystemmajrelease}-x86_64",
-        baseurl  => "https://www.softwarecollections.org/repos/remi/php${name}more/epel-${::operatingsystemmajrelease}-x86_64",
-        gpgkey   => "https://copr-be.cloud.fedoraproject.org/results/remi/php${name}more/pubkey.gpg",
-        enabled  => 1,
-        gpgcheck => 1,
-    }
-  } elsif $name =~ /^7/ {
-    require yum::centos::remi
-    $repo_name = 'remi-safe'
-  }
+  require yum::centos::remi
   ensure_packages(prefix(reject(
     [ 'php-bcmath',
       'php-cli',
@@ -36,24 +22,14 @@ define scl::phpx(
       'php-fpm',
       'php-gd',
       'php-gmp',
+      'php-imap',
       'php-intl',
       'php-mbstring',
+      'php-mcrypt',
       'php-mysqlnd',
       'php-odbc',
       'php-pdo',
       'php-pear',
-      'php-pecl-memcache',
-      'php-pgsql',
-      'php-process',
-      'php-recode',
-      'php-soap',
-      'php-xml',
-      'php-xmlrpc',
-    ],$disabled_libs),"${prefix}php${name}-"
-  ))
-  ensure_packages(prefix(reject(
-    [ 'php-imap',
-      'php-mcrypt',
       'php-pecl-apcu',
       'php-pecl-crypto',
       'php-pecl-geoip',
@@ -62,6 +38,7 @@ define scl::phpx(
       'php-pecl-lzf',
       'php-pecl-mailparse',
       'php-pecl-memcached',
+      'php-pecl-memcache',
       'php-pecl-msgpack',
       'php-pecl-oauth',
       'php-pecl-propro',
@@ -72,9 +49,15 @@ define scl::phpx(
       'php-pecl-uploadprogress',
       'php-pecl-uuid',
       'php-pecl-yaml',
+      'php-pgsql',
+      'php-process',
+      'php-recode',
+      'php-soap',
       'php-suhosin',
       'php-tidy',
-    ],$disabled_libs),"${more_prefix}php${name}-"
-  ),{require   => Yum::Repo[$repo_name]})
-  ensure_packages($additional_libs,{require => Yum::Repo[$repo_name]})
+      'php-xml',
+      'php-xmlrpc',
+    ],$disabled_libs),"${prefix}php${name}-"
+  ))
+  ensure_packages($additional_libs,{require => Yum::Repo['remi-safe']})
 }
