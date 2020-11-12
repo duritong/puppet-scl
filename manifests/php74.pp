@@ -8,6 +8,7 @@ class scl::php74 {
         'php74-php-opcache',
         'php74-php-pecl-zip',
         'php74-php-pecl-recode',
+        'php74-php-sodium',
       ],
   }
 }
