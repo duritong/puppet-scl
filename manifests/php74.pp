@@ -1,6 +1,6 @@
 # install php 7.4 incl. common libs
 class scl::php74 {
-  scl::phpx{
+  scl::phpx {
     '74':
       disabled_libs   => '^php-(suhosin|mcrypt|recode)$',
       additional_libs => [

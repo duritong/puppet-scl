@@ -1,6 +1,6 @@
 # install php 7.3 incl. common libs
 class scl::php73 {
-  scl::phpx{
+  scl::phpx {
     '73':
       disabled_libs   => '^php-(suhosin|mcrypt)$',
       additional_libs => [
