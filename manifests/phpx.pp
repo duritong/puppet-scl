@@ -33,7 +33,7 @@ define scl::phpx (
           'php-pecl-crypto',
           'php-pecl-geoip',
           'php-pecl-http',
-          'php-pecl-imagick',
+          'php-pecl-imagick-im6',
           'php-pecl-lzf',
           'php-pecl-mailparse',
           'php-pecl-memcached',
