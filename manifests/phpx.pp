@@ -59,4 +59,6 @@ define scl::phpx (
       ],$disabled_libs),"${prefix}php${name}-"
   ))
   ensure_packages($additional_libs,{ require => Yum::Repo['remi-safe'] })
+
+  Package<| title == 'apache' |> -> Package<| tag == 'scl::phpx' |>
 }
