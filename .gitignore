@@ -3,3 +3,4 @@ vendor/bundle
 .librarian
 .tmp
 *.lock
+.bundle
