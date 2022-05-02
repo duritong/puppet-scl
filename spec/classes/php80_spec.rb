@@ -40,7 +40,7 @@ describe 'scl::php80', :type => 'class' do
       'php80-php-snuffleupagus',
       'php80-php-opcache', ].each do |p|
       it { is_expected.to contain_package(p).with(
-        :ensure => 'present',
+        :ensure => 'installed',
       )}
     end
     [ 'php80-php-recode',

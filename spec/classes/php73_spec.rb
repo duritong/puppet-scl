@@ -42,7 +42,7 @@ describe 'scl::php73', :type => 'class' do
       'php73-php-snuffleupagus',
       'php73-php-opcache', ].each do |p|
       it { is_expected.to contain_package(p).with(
-        :ensure => 'present',
+        :ensure => 'installed',
       )}
     end
     [ 'php73-php-pecl-sqlite', ].each do |p|

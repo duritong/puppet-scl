@@ -5,6 +5,11 @@ describe 'scl', :type => 'class' do
     let(:facts) {
       {
         :operatingsystemmajrelease => '7',
+        :os => {
+          :release => {
+            :major => '7',
+          },
+        },
       }
     }
     let(:pre_condition){ 'include yum::prerequisites' }
@@ -21,7 +26,7 @@ describe 'scl', :type => 'class' do
       '/etc/yum.repos.d/CentOS-SCLo-scl.repo',
       '/etc/yum.repos.d/CentOS-SCLo-scl-rh.repo',].each do |f|
       it { is_expected.to contain_file(f).with(
-        :ensure  => 'present',
+        :ensure  => 'file',
         :require => 'Package[centos-release-scl]',
       )}
     end

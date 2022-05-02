@@ -40,7 +40,7 @@ describe 'scl::php56', :type => 'class' do
       'php56-php-xml',
       'php56-php-xmlrpc' ].each do |p|
       it { is_expected.to contain_package(p).with(
-        :ensure => 'present',
+        :ensure => 'installed',
       )}
     end
     [ 'php56-php-pecl-sqlite', ].each do |p|

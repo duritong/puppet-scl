@@ -41,7 +41,7 @@ describe 'scl::php74', :type => 'class' do
       'php74-php-snuffleupagus',
       'php74-php-opcache', ].each do |p|
       it { is_expected.to contain_package(p).with(
-        :ensure => 'present',
+        :ensure => 'installed',
       )}
     end
     [ 'php74-php-recode',

@@ -5,6 +5,11 @@ describe 'scl::ruby23', :type => 'class' do
     let(:facts) {
       {
         :operatingsystemmajrelease => '7',
+        :os => {
+          :release => {
+            :major => '7',
+          },
+        },
       }
     }
     let(:pre_condition){ 'include yum::prerequisites' }
